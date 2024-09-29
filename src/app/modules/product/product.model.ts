@@ -1,36 +1,42 @@
-import { model, Schema } from "mongoose";
-import { TProduct } from "./product.interface";
+import mongoose, { Schema } from "mongoose";
+import { TProducts } from "./product.interface";
 
-const productModelSchema = new Schema<TProduct>({
-    title : {
-        type : String,
-        required : true
-    },
-    description : {
-        type : String,
-        required : true
-    },
-    brand : {
-        type : String,
-        required : true
-    },
-    availableQuantity : {
-        type : Number,
-        required : true
-    },
-    price : {
-        type : Number,
-        required : true
-    },
-    rating : {
-        type : Number,
-        required : true
-    },
-    image : {
-        type : String,
-        required : true
-    },
+const productSchema = new Schema(
+  {
+    image: { type: String, required: true },
+    title: { type: String, required: true },
+    brand: { type: String, required: true },
+    description: { type: String, required: true },
+    availableQuantity: { type: Number, required: true },
+    price: { type: Number, required: true },
+    ratings: { type: Number, required: true },
+    isDeleted: { type: Boolean, default: false },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-})
+// Create compound text index for better search performance
+productSchema.index({ title: "text", brand: "text", description: "text" });
 
-export const ProductModel = model<TProduct>('products', productModelSchema)
+productSchema.pre("find", function (next) {
+  this.find({ isDeleted: { $ne: true } });
+
+  next();
+});
+
+productSchema.pre("findOne", function (next) {
+  this.find({ isDeleted: { $ne: true } });
+
+  next();
+});
+
+productSchema.pre("findOneAndUpdate", function (next) {
+  this.find({ isDeleted: { $ne: true } });
+
+  next();
+});
+
+export const ProductModel = mongoose.model<TProducts>("Product", productSchema);
+
