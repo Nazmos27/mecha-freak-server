@@ -1,5 +1,5 @@
-import mongoose, { Schema } from "mongoose";
-import { TProducts } from "./product.interface";
+import mongoose, { Schema } from 'mongoose';
+import { TProducts } from './product.interface';
 
 const productSchema = new Schema(
   {
@@ -14,29 +14,28 @@ const productSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 // Create compound text index for better search performance
-productSchema.index({ title: "text", brand: "text", description: "text" });
+productSchema.index({ title: 'text', brand: 'text', description: 'text' });
 
-productSchema.pre("find", function (next) {
+productSchema.pre('find', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
-productSchema.pre("findOne", function (next) {
+productSchema.pre('findOne', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
-productSchema.pre("findOneAndUpdate", function (next) {
+productSchema.pre('findOneAndUpdate', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
-export const ProductModel = mongoose.model<TProducts>("Product", productSchema);
-
+export const ProductModel = mongoose.model<TProducts>('Product', productSchema);

@@ -1,5 +1,5 @@
-import { TReview } from "./review.interface";
-import { ReviewModel } from "./review.model";
+import { TReview } from './review.interface';
+import { ReviewModel } from './review.model';
 
 const createReviewIntoDB = async (payload: TReview) => {
   const result = await ReviewModel.create(payload);
@@ -38,7 +38,7 @@ const deleteReviewFromDB = async (id: string) => {
     },
     {
       new: true,
-    }
+    },
   );
 
   return result;

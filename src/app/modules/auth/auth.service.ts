@@ -8,12 +8,12 @@ import AppError from '../../differentErrorrs/AppError';
 
 const signUpUser = async (payload: TUser) => {
   const newUser = await UserModel.create(payload);
-//   const loggedInfo = {
-//     userEmail: payload.email,
-//     loginAt: new Date(),
-//     token: 'no-token-granted-yet',
-//   };
-//   await UserServices.createLoginInfoIntoDB(loggedInfo);
+  //   const loggedInfo = {
+  //     userEmail: payload.email,
+  //     loginAt: new Date(),
+  //     token: 'no-token-granted-yet',
+  //   };
+  //   await UserServices.createLoginInfoIntoDB(loggedInfo);
   return newUser;
 };
 
@@ -44,15 +44,15 @@ const loginUser = async (payload: TCredentials) => {
     expiresIn: '30d',
   });
 
-//   const userLoginData = {
-//     userEmail: user?.email,
-//     loginAt: new Date(),
-//     token: accessToken,
-//   };
-//   await UserServices.updateLoginInfo(userLoginData);
+  //   const userLoginData = {
+  //     userEmail: user?.email,
+  //     loginAt: new Date(),
+  //     token: accessToken,
+  //   };
+  //   await UserServices.updateLoginInfo(userLoginData);
 
-//   const sharedData = SharedData.getInstance();
-//   sharedData.setUserLoginData(userLoginData);
+  //   const sharedData = SharedData.getInstance();
+  //   sharedData.setUserLoginData(userLoginData);
 
   return {
     accessToken,

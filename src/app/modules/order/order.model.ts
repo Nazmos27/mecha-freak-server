@@ -1,8 +1,8 @@
-import mongoose, { Schema } from "mongoose";
-import { TOrder } from "./order.interface";
+import mongoose, { Schema } from 'mongoose';
+import { TOrder } from './order.interface';
 
 const OrderInfoSchema = new Schema({
-  product: { type: mongoose.Types.ObjectId, ref: "Product", required: true },
+  product: { type: mongoose.Types.ObjectId, ref: 'Product', required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true, min: 1 },
 });
@@ -17,34 +17,33 @@ const OrderSchema = new Schema(
     orderStatus: {
       type: String,
       required: true,
-      enum: ["unpaid", "paid", "confirmed", "delivered"],
+      enum: ['unpaid', 'paid', 'confirmed', 'delivered'],
     },
     orderInfo: { type: [OrderInfoSchema], required: true },
     isDeleted: { type: Boolean, default: false },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-OrderSchema.pre("find", function (next) {
+OrderSchema.pre('find', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
-OrderSchema.pre("findOne", function (next) {
+OrderSchema.pre('findOne', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
-OrderSchema.pre("findOneAndUpdate", function (next) {
+OrderSchema.pre('findOneAndUpdate', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
 // Create the model
-export const OrderModel = mongoose.model<TOrder>("Order", OrderSchema);
-
+export const OrderModel = mongoose.model<TOrder>('Order', OrderSchema);

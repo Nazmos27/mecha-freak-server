@@ -4,7 +4,7 @@ import { TUserRole } from '../modules/user/user.interface';
 import catchAsync from '../utils/catchAsync';
 import httpStatus from 'http-status';
 import config from '../config';
-import {  UserModel } from '../modules/user/user.model';
+import { UserModel } from '../modules/user/user.model';
 import AppError from '../differentErrorrs/AppError';
 import RouteError from '../differentErrorrs/RouteError';
 

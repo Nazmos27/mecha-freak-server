@@ -7,23 +7,22 @@ import { PaymentRoute } from '../modules/payment/payment.route';
 const router = Router();
 
 const moduleRoutes = [
- 
   {
     path: '/products',
     route: ProductRoutes,
   },
   {
     path: '/orders',
-    route: OrderRoutes ,
+    route: OrderRoutes,
   },
   {
     path: '/reviews',
     route: ReviewRoutes,
   },
   {
-    path : '/payment',
-    route : PaymentRoute
-  }
+    path: '/payment',
+    route: PaymentRoute,
+  },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

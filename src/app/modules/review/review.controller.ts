@@ -1,5 +1,5 @@
-import { ReviewServices } from "./review.service";
-import catchAsync from "../../utils/catchAsync";
+import { ReviewServices } from './review.service';
+import catchAsync from '../../utils/catchAsync';
 
 const createReview = catchAsync(async (req, res) => {
   const result = await ReviewServices.createReviewIntoDB(req.body);
@@ -16,7 +16,7 @@ const getAllReviews = catchAsync(async (req, res) => {
   const email = req.query.email;
   let emailString: string | undefined = undefined;
 
-  if (typeof email === "string") {
+  if (typeof email === 'string') {
     emailString = email;
   }
   const result = await ReviewServices.getAllReviewsFromDB(emailString);

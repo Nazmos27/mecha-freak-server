@@ -1,5 +1,5 @@
-import { TOrder } from "./order.interface";
-import { OrderModel } from "./order.model";
+import { TOrder } from './order.interface';
+import { OrderModel } from './order.model';
 
 const createOrderIntoDB = async (payload: TOrder) => {
   const result = await OrderModel.create(payload);
@@ -38,7 +38,7 @@ const deleteOrderFromDB = async (id: string) => {
     },
     {
       new: true,
-    }
+    },
   );
 
   return result;

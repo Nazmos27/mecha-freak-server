@@ -29,9 +29,7 @@ const userSchema = new Schema<TUser, UserModelInterface>({
     type: String,
     required: true,
   },
-  
 });
-
 
 userSchema.pre('save', async function (next) {
   const checker = await UserModel.find({ email: this.email });
@@ -53,8 +51,6 @@ userSchema.pre('save', async function (next) {
 //   doc.password = undefined;
 //   next();
 // });
-
-
 
 userSchema.statics.isUserExistChecker = async function (
   data: Record<string, unknown>,
@@ -84,5 +80,3 @@ userSchema.statics.isPasswordMatchedChecker = async function (
 };
 
 export const UserModel = model<TUser, UserModelInterface>('users', userSchema);
-
-

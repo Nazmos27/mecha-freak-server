@@ -1,5 +1,5 @@
-import mongoose, { Schema } from "mongoose";
-import { TReview } from "./review.interface";
+import mongoose, { Schema } from 'mongoose';
+import { TReview } from './review.interface';
 
 const ReviewSchema = new Schema(
   {
@@ -13,26 +13,25 @@ const ReviewSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-ReviewSchema.pre("find", function (next) {
+ReviewSchema.pre('find', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
-ReviewSchema.pre("findOne", function (next) {
+ReviewSchema.pre('findOne', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
-ReviewSchema.pre("findOneAndUpdate", function (next) {
+ReviewSchema.pre('findOneAndUpdate', function (next) {
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
 
-export const ReviewModel = mongoose.model<TReview>("Review", ReviewSchema);
-
+export const ReviewModel = mongoose.model<TReview>('Review', ReviewSchema);

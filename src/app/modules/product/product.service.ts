@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { TProducts } from "./product.interface";
-import { ProductModel } from "./product.model";
+import { TProducts } from './product.interface';
+import { ProductModel } from './product.model';
 
 const createProductIntoDB = async (payload: TProducts) => {
   const result = await ProductModel.create(payload);
@@ -11,7 +11,7 @@ const createProductIntoDB = async (payload: TProducts) => {
 const getAllProductsFromDB = async (
   search: string | undefined,
   limit: string | undefined,
-  page: string | undefined
+  page: string | undefined,
 ) => {
   let query = {};
   if (search) {
@@ -54,7 +54,7 @@ const deleteProductFromDB = async (id: string) => {
     },
     {
       new: true,
-    }
+    },
   );
 
   return result;

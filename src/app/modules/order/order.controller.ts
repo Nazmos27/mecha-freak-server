@@ -1,5 +1,5 @@
-import { OrderServices } from "./order.service";
-import catchAsync from "../../utils/catchAsync";
+import { OrderServices } from './order.service';
+import catchAsync from '../../utils/catchAsync';
 
 const createOrder = catchAsync(async (req, res) => {
   const result = await OrderServices.createOrderIntoDB(req.body);
@@ -16,7 +16,7 @@ const getAllOrders = catchAsync(async (req, res) => {
   const email = req.query.email;
   let emailString: string | undefined = undefined;
 
-  if (typeof email === "string") {
+  if (typeof email === 'string') {
     emailString = email;
   }
   const result = await OrderServices.getAllOrdersFromDB(emailString);

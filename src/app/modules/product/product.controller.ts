@@ -17,12 +17,12 @@ const getAllProducts = catchAsync(async (req, res) => {
   const { products, total } = await ProductServices.getAllProductsFromDB(
     search as string | undefined,
     limit as string | undefined,
-    page as string | undefined
+    page as string | undefined,
   );
 
   res.status(200).json({
     success: true,
-    message: "All Products data are retrieved Successfully",
+    message: 'All Products data are retrieved Successfully',
     data: products,
     totalProducts: total,
   });

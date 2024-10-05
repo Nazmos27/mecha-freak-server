@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
 export type TOrderInfo = {
   product: Types.ObjectId;
@@ -12,7 +12,7 @@ export type TOrder = {
   email: string;
   deliveryAddress: string;
   totalPrice: number;
-  orderStatus: "unpaid" | "paid" | "confirmed" | "delivered";
+  orderStatus: 'unpaid' | 'paid' | 'confirmed' | 'delivered';
   orderInfo: TOrderInfo[];
   isDeleted?: boolean;
 };
